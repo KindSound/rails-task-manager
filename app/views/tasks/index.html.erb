@@ -1,0 +1,30 @@
+<div class="container">
+
+<h1> My Tasks </h1>
+
+</div>
+<table>
+  <thead>
+    <tr>
+<% @tasks.each do |task|%>
+<% if task.completed == true %>
+<%= "[X]"  %> <%= link_to task.title, task %>
+<%= link_to 'Edit', edit_path(task) %>
+<%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% else %>
+<%= "[_]  " %><%= link_to task.title, task %>
+<%= link_to 'Edit', edit_path(task) %>
+<%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<br>
+<% end %>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', tasks_new_path %>
